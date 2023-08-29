@@ -1,6 +1,7 @@
 import { getWeatherByLocation } from "./userLocation.js";
 import { getWeatherData } from "./api.js";
 import { resetWeatherContent } from "./helpers/resetWeatherContent.js";
+import { cToF, fToC } from "./helpers/tempConvert.js";
 
 const createHeader = (city) => {
     const header = document.createElement('header');
@@ -53,10 +54,10 @@ const createHeader = (city) => {
     
      searchBtn.addEventListener('click', async () => {
         if (!searchInput.value) {
+            showError("Please, enter the city");
             return;
         }
-
-        try {
+         try {
             const weather = await getWeatherData(searchInput.value);
 
             if(weather.message) {
@@ -68,7 +69,41 @@ const createHeader = (city) => {
         } catch (error) {
             console.log(error);
         }
-    });
+     });
+    
+    unitsC.addEventListener('click', () => {
+        if (unitsC.classList.contains('unit-current')) {
+            return;
+        }
+        unitsC.classList.add('unit-current');
+        unitsF.classList.remove('unit-current');
+        document.querySelector('.weather__units').textContent = 'o';
+        const temp = document.querySelector('.weather__temperature');
+        const convertedTemp = cToF(+temp.textContent);
+        temp.textContent = Math.round(convertedTemp);
+    })
+
+    unitsF.addEventListener('click', () => {
+        if (unitsF.classList.contains('unit-current')) {
+            return;
+        }
+        unitsF.classList.add('unit-current');
+        unitsC.classList.remove('unit-current');
+        document.querySelector('.weather__units').textContent = 'f';
+        const temp = document.querySelector('.weather__temperature');
+        const convertedTemp = fToC(+temp.textContent);
+        temp.textContent = Math.round(convertedTemp);
+    })
+    
+    window.addEventListener('click', (e) => {
+        if (e.target === searchInput || e.target === searchBtn || e.target === cityChange) {
+            return;
+        }
+        headerCity.innerHTML = "";
+        errorBlock.classList.remove('show-error');
+        searchInput.value = '';
+        headerCity.append(cityName, cityInner);
+    })
 
     cityLocation.addEventListener('click', getWeatherByLocation);
 
