@@ -7,7 +7,6 @@ const app = async () => {
     const header = createHeader(weather.name);
     const main = createContent(weather);
     document.body.append(header, main);
-    console.log(weather);
 }
 
 app();
