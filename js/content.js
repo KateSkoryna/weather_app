@@ -22,7 +22,9 @@ const createContent = data => {
   weatherInfo.classList.add('weather-info');
   weatherInfoList.classList.add('weather-info__list');
 
-  temperature.textContent = Math.floor(data.main.temp);
+  const currentTemperature = Math.floor(data.main.temp - 273.15);
+
+  temperature.textContent = Math.floor(currentTemperature);
   const weatherDescription = data.weather[0].description;
   description.textContent =
     weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
