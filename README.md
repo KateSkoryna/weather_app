@@ -22,4 +22,4 @@ button to fetch and display the weather information for the specified city.
 
 ## Credits 
 OpenWeatherMap API: Provides real-time weather data for the application. Icons made by
-Freepik from www.flaticon.com.
+[www.icons8.com.](https://icons8.com/)
