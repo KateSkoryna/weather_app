@@ -1,4 +1,5 @@
 @import './settings.css';
+@import './search.css';
 @import './header.css';
 @import './content.css';
-@import './media.css';
+@import './footer.css';

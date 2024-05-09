@@ -13,12 +13,6 @@ html {
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Lato', sans-serif;
-    margin: 0;
-    background-color: var(--cornflower-blue);
-}
-
 *,*::after,*::before {
     box-sizing: inherit;
 }
@@ -28,18 +22,18 @@ body {
     --cornflower-blue: #6195ed;
 }
 
+body {
+    font-family: 'Lato', sans-serif;
+    margin: auto;
+    background-color: var(--cornflower-blue);
+}
+
+h1, h2, h3, p, button {
+    margin: 0;
+}
+
 .container {
     max-width: 1226px;
     margin: 0 auto;
     padding: 0 15px;
-}
-
-.btn-reset {
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    border: none;
-    opacity: 0.6;
-    background-color: transparent;
-    color: var(--color-white);
 }

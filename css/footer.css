@@ -1,0 +1,14 @@
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: 468px) {  
+        flex-direction: row;
+    }
+}
+
+.footer__content {
+    color: var(--color-white);
+}
